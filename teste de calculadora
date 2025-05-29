@@ -1,0 +1,58 @@
+package com.A3.demo;
+
+import com.A3.demo.sevice.CalculadoraService;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@SpringBootTest
+class Projetoa3ApplicationTests {
+
+	@Test
+	void testSoma() {
+		CalculadoraService calculadora = new CalculadoraService ();
+		int resultado = calculadora.somar(2,2);
+		assertEquals(4 , resultado );
+	}
+
+}
+
+class Projetoa3ApplicationTestssubitração {
+
+	@Test
+	void testSubitração() {
+		CalculadoraService calculadora = new CalculadoraService();
+		int resultadosubtrasão = calculadora.subtrair (3, 2);
+		assertEquals(1, resultadosubtrasão);
+	}
+    package com.A3.demo.sevice;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class Projetoa3ApplicationTestsdivisão {
+
+    @Test
+    void deveLancarExcessaAoDividirPorZero() {
+
+        CalculadoraService calculadoraAoDividir = new CalculadoraService();
+        assertThrows(ArithmeticException.class, () -> {
+            calculadoraAoDividir.dividir(1 , 0);
+        });
+    }
+
+    @Test
+    void testdividirSeNumerosCorretos() {
+        CalculadoraService calculadora = new CalculadoraService();
+        double resultadodividisão = calculadora.dividir(2, 2);
+        assertEquals(1, resultadodividisão);
+
+    }
+
+}
+
+
+
