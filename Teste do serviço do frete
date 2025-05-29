@@ -1,0 +1,59 @@
+package com.A3.demo.service;
+
+import com.A3.demo.sevice.FreteService;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+ import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+ class FreteServiceTest {
+
+     private final FreteService service = new FreteService();
+
+     @Test
+     void calculadoraFresteTest() {
+         double resultado = service.calcularFrete(10.0, 100.0, false);
+         // 10*2 + 100*0.5 = 20 + 50 = 70
+         assertEquals(70.0, resultado);
+
+     }
+
+         @Test
+         void calculadoraFreteTestcerto() {
+             double resultadocerto = service.calcularFrete(10.0, 100.0, true);
+             assertEquals(105.0, resultadocerto);
+         }
+
+         @Test
+        void CalculadoraFreteTestValorMinimo() {
+         double resultadoMinimo = service.calcularFrete(1.0, 10.0, false);
+         //base 7*1,5 +10*0,5 = 2 + 5 = 7<20 -> 20 valor estimado
+         assertEquals(20.0, resultadoMinimo);
+         }
+
+         @Test
+         void CalculadoraFreteTestValorMaximo() {
+         double resultadoMaximo = service.calcularFrete(1.0, 10.0, true);
+             // base = 7 * 1.5 = 10.5 < 20 → deve ser 20
+             assertEquals(20.0, resultadoMaximo);
+         }
+
+         @Test
+        void CalculdorafreteTestPesoInvalido(){
+         assertThrows(IllegalArgumentException.class, () -> {
+             service.calcularFrete(0, 50.0, false);
+         });
+         }
+         @Test
+     void CalculdorafreteTestDistanciaInvalido(){
+         assertThrows(IllegalArgumentException.class, () -> {
+            service.calcularFrete(10.0, -10.0, false);
+         });
+         }
+         //10.0, -10.0, false
+
+ }
+
+
+
