@@ -1,0 +1,27 @@
+package com.A3.demo.sevice;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class FreteService {
+    public double calcularFrete(double peso, String estado) {
+        double freteBase = 10.0;
+
+        if (peso <= 0) {
+            throw new IllegalArgumentException("Peso inválido.");
+        }
+
+        if (estado.equalsIgnoreCase("SP")) {
+            return freteBase + (peso * 1.0);
+        } else if (estado.equalsIgnoreCase("RJ")) {
+            return freteBase + (peso * 1.5);
+        } else {
+            return freteBase + (peso * 2.0);
+        }
+    }
+
+    public double calcularFrete(double v, double v1, boolean b) {
+
+        return v;
+    }
+}
